@@ -1,6 +1,6 @@
 const amqp = require("amqplib/callback_api");
 
-amqp.connect("amqp://localhost", function (error0, connection) {
+amqp.connect("amqp://ti_rabbitmq", function (error0, connection) {
   if (error0) {
     throw error0;
   }
@@ -20,7 +20,7 @@ amqp.connect("amqp://localhost", function (error0, connection) {
       durable: true, autoDelete: true
     });
 
-    channel.assertQueue(queue, {autoDelete: true, durable: true}, (error_1)=> {
+    channel.assertQueue(queue, { durable: true}, (error_1)=> {
       if(error_1) {
         throw error_1;
       }
